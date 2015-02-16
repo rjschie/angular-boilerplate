@@ -1,0 +1,29 @@
+#!/bin/bash
+
+npm link del
+npm link gulp
+npm link gulp-autoprefixer
+npm link gulp-cdnizer
+npm link gulp-imagemin
+npm link gulp-jshint
+npm link gulp-livereload
+npm link gulp-load-plugins
+npm link gulp-minify-css
+npm link gulp-minify-html
+npm link gulp-replace
+npm link gulp-rev
+npm link gulp-sass
+npm link gulp-svgmin
+npm link gulp-uglify
+npm link gulp-usemin
+npm link svgo
+
+if [ -d "api" ]; then
+	cd api && composer install
+	chown ryanschie: ./vendor
+	chown -R ryanschie: ./vendor/*
+	cd ../
+fi
+
+chown ryanschie: ./node_modules
+chown -R ryanschie: ./node_modules/*
