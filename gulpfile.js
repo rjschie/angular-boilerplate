@@ -35,12 +35,14 @@ gulp.task('css', function() {
 		.pipe(plugins.sass({ style: 'expanded' }))
 		.pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8',
 			'ie 9', 'opera 12.1'))
-		.pipe(gulp.dest(config.path.dev.css));
+		.pipe(gulp.dest(config.path.dev.css)
+		.on('error',plugins.util.log));
 });
 
 gulp.task('js', function() {
 	return gulp.src(config.path.dev.js + '/*.js')
-		.pipe(plugins.jshint());
+		.pipe(plugins.jshint()
+		.on('error',plugins.util.log));
 });
 
 gulp.task('watch', function() {

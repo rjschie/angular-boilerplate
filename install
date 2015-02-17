@@ -16,6 +16,7 @@ npm link gulp-sass
 npm link gulp-svgmin
 npm link gulp-uglify
 npm link gulp-usemin
+npm link gulp-util
 npm link svgo
 
 if [ -d "api" ]; then
