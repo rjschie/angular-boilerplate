@@ -1,8 +1,8 @@
 {
-  "name": "li3-angular-framework",
-  "description": "Framework for li3 resources and angular use",
-  "version": "1.0.0",
-  "homepage": "https://github.com/rjschie/li3-angular-framework",
+  "name": "angular-boilerplate",
+  "description": "My Angular Boilerplate",
+  "version": "0.1",
+  "homepage": "https://github.com/rjschie/angular-boilerplate",
   "authors": [
     "Ryan Schie <rjschie@gmail.com>"
   ],
@@ -20,6 +20,7 @@
     "angular": "~1.3.6",
     "angular-resource": "~1.3.6",
     "angular-route": "~1.3.6",
+    "angular-ui-router": ">= 0.2.13",
     "jquery": "~2.1.1",
     "modernizr": "~2.8.3"
   }
