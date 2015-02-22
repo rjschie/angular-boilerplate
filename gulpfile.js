@@ -21,7 +21,8 @@ var config = {
 			css		: 'dev/css',
 			scss	: 'dev/css/src',
 			img		: 'dev/img',
-			js		: 'dev/js'
+			js		: 'dev/js',
+			assets: 'dev/assets'
 		}
 	}
 };
@@ -45,6 +46,24 @@ gulp.task('js', function() {
 		.on('error',plugins.util.log));
 });
 
+gulp.task('images', function() {
+	gulp.src(config.path.dev.assets + '/imgs/**/*')
+		.pipe(plugins.imagemin({
+			optimizationLevel: 7
+		}))
+		.pipe(gulp.dest(config.path.dev.assets + '/imgs'));
+	gulp.src(config.path.dev.assets + '/test_photos/**/*')
+		.pipe(plugins.imagemin({
+			optimizationLevel: 7
+		}))
+		.pipe(gulp.dest(config.path.dev.assets + '/test_photos'));
+	gulp.src(config.path.dev.img + '/**/*')
+		.pipe(plugins.imagemin({
+			optimizationLevel: 7
+		}))
+		.pipe(gulp.dest(config.path.dev.img));
+});
+
 gulp.task('watch', function() {
 	plugins.livereload.listen();
 	gulp.watch([config.path.dev.root + '/**/*.html',config.path.dev.root + '/**/*.php'])
@@ -63,20 +82,13 @@ gulp.task('build:clean', function(cb) {
 				config.path.build.root + '/.*' ], cb);
 });
 
-gulp.task('build:images', function() {
-	return gulp.src(config.path.dev.root + '/img/src/*')
-		.pipe(plugins.imagemin({
-			optimizationLevel: 7
-		}))
-		.pipe(gulp.dest(config.path.dev.root + '/img'))
-});
-
 gulp.task('build:move', function() {
 	return gulp.src([
 			config.path.dev.root + '/*.*',
 			config.path.dev.root + '/.*',
 			config.path.dev.root + '/img/*.*',
-			config.path.dev.root + '/partials/**/*.*'
+			config.path.dev.root + '/partials/**/*.*',
+			config.path.dev.assets + '/**/*.*'
 		], {base: config.path.dev.root})
 		.pipe(gulp.dest(config.path.build.root));
 });
