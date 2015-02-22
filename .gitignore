@@ -9,12 +9,6 @@
 Thumbs.db
 
 # =========================
-# Ignore Dependencies
-# =========================
-
-node_modules
-
-# =========================
 # Ignore Others
 # =========================
 
@@ -33,5 +27,7 @@ composer.lock
 
 /.idea
 /_design
-/api/bootstrap/compiled.php
-/api/vendor
+api/bootstrap/compiled.php
+api/vendor
+node_modules
+bower_components
