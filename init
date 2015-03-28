@@ -9,27 +9,27 @@ NC='\033[0m' # No Color
 ## Install Node Modules for Gulp
 ####
 if [ ! -d "node_modules" ]; then
-	sudo npm link del
-	sudo npm link gulp
-	sudo npm link gulp-autoprefixer
-	sudo npm link gulp-cdnizer
-	sudo npm link gulp-imagemin
-	sudo npm link gulp-jshint
-	sudo npm link gulp-livereload
-	sudo npm link gulp-load-plugins
-	sudo npm link gulp-minify-css
-	sudo npm link gulp-minify-html
-	sudo npm link gulp-replace
-	sudo npm link gulp-rev
-	sudo npm link gulp-sass
-	sudo npm link gulp-svgmin
-	sudo npm link gulp-uglify
-	sudo npm link gulp-usemin
-	sudo npm link gulp-util
-	sudo npm link svgo
+	npm link del
+	npm link gulp
+	npm link gulp-autoprefixer
+	npm link gulp-cdnizer
+	npm link gulp-imagemin
+	npm link gulp-jshint
+	npm link gulp-livereload
+	npm link gulp-load-plugins
+	npm link gulp-minify-css
+	npm link gulp-minify-html
+	npm link gulp-replace
+	npm link gulp-rev
+	npm link gulp-sass
+	npm link gulp-svgmin
+	npm link gulp-uglify
+	npm link gulp-usemin
+	npm link gulp-util
+	npm link svgo
 
-	sudo chown ryanschie: ./node_modules
-	sudo chown -R ryanschie: ./node_modules/*
+	chown ryanschie: ./node_modules
+	chown -R ryanschie: ./node_modules/*
 
 	echo -e "${green}Added Node Modules${NC}"
 fi
@@ -43,12 +43,19 @@ if [ -d "api" ]; then
 
 	if [ ! -d "vendor" ]; then
 		composer install
-		echo -e "${green}Installed API Vendor Files${NC}"
 	fi
 
-	sudo chown ryanschie: ./vendor
-	sudo chown -R ryanschie: ./vendor/*
+	chmod -R 777 app/storage
+	chown ryanschie: ./vendor
+	chown -R ryanschie: ./vendor/*
 	cd ../
+
+	echo -e "${green}Installed API Vendor Files${NC}"
+fi
+
+if [ ! -d "dev/bower_components" ]; then
+	bower install --allow-root
+	echo -e "${green}Installed Bower Components${NC}"
 fi
 
 ####
